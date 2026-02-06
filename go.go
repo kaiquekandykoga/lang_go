@@ -19,6 +19,9 @@ func main() {
 
 	koga, kandy := swap("Koga", "Kandy")
 	fmt.Println("swap(\"Koga\", \"Kandy\") =", koga, kandy)
+
+	x, y := split(17)
+	fmt.Println("split(17) =", x, y)
 }
 
 func add_0(a int, b int) int {
@@ -34,4 +37,11 @@ func add_1(x, y int) int {
 // Go's multiple return values
 func swap(x, y string) (string, string) {
 	return y, x
+}
+
+// Go's named return values
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
 }
