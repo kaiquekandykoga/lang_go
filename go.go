@@ -48,6 +48,10 @@ func main() {
 	fmt.Println("\nBEGIN type_conversions()")
 	type_conversions()
 	fmt.Println("END type_conversions()")
+
+	fmt.Println("\nBEGIN type_inference()")
+	type_inference()
+	fmt.Println("END type_inference()")
 }
 
 func add_0(a int, b int) int {
@@ -122,4 +126,13 @@ func type_conversions() {
 	var f float64 = math.Sqrt(float64(x*x + y*y))
 	var z uint = uint(f)
 	fmt.Println(x, y, f, z) // 3 4 5 5
+}
+
+func type_inference() {
+	i := 42           // int
+	f := 3.142        // float64
+	g := 0.867 + 0.5i // complex128
+	fmt.Printf("Type: %T Value: %v\n", i, i)
+	fmt.Printf("Type: %T Value: %v\n", f, f)
+	fmt.Printf("Type: %T Value: %v\n", g, g)
 }
