@@ -52,6 +52,10 @@ func main() {
 	fmt.Println("\nBEGIN type_inference()")
 	type_inference()
 	fmt.Println("END type_inference()")
+
+	fmt.Println("\nBEGIN constants()")
+	constants()
+	fmt.Println("END constants()")
 }
 
 func add_0(a int, b int) int {
@@ -135,4 +139,12 @@ func type_inference() {
 	fmt.Printf("Type: %T Value: %v\n", i, i)
 	fmt.Printf("Type: %T Value: %v\n", f, f)
 	fmt.Printf("Type: %T Value: %v\n", g, g)
+}
+
+func constants() {
+	const Hai = "はい"
+	fmt.Println("Hai", Hai)
+
+	const Arigatou = true
+	fmt.Println("Arigatou", Arigatou)
 }
