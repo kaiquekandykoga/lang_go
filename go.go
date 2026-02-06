@@ -44,6 +44,10 @@ func main() {
 	fmt.Println("\nBEGIN zero_values()")
 	zero_values()
 	fmt.Println("END zero_values()")
+
+	fmt.Println("\nBEGIN type_conversions()")
+	type_conversions()
+	fmt.Println("END type_conversions()")
 }
 
 func add_0(a int, b int) int {
@@ -111,4 +115,11 @@ func zero_values() {
 	var b bool
 	var s string
 	fmt.Printf("%v %v %v %q\n", i, f, b, s) // 0 0 false ""
+}
+
+func type_conversions() {
+	var x, y int = 3, 4
+	var f float64 = math.Sqrt(float64(x*x + y*y))
+	var z uint = uint(f)
+	fmt.Println(x, y, f, z) // 3 4 5 5
 }
