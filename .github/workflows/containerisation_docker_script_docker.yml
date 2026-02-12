@@ -1,0 +1,26 @@
+name: (Containerisation/Docker/Script - Docker Test)
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  docker_test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Build Docker image
+      run: docker build -t lang-go-docker-script containerisation/docker/script/
+    - name: Run tests in Docker
+      run: |
+        docker run --rm \
+          -v "$PWD/containerisation/docker/script:/src" \
+          -w /src \
+          golang:1.25-alpine \
+          go test -v
