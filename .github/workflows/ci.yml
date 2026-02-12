@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.25'
+        
+    - name: Test main Go file
+      run: |
+        go run go.go
+        
+    - name: Test containerisation script
+      working-directory: ./containerisation/docker/script
+      run: |
+        go test -v ./...
+        go build -v ./...
+        
+    - name: Test gin basic
+      working-directory: ./stack/gin/basic
+      run: |
+        go test -v ./...
+        go build -v ./...
+        
+    - name: Test task runner make
+      working-directory: ./task_runners/make
+      run: |
+        go run make.go
