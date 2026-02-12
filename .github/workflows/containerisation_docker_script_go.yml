@@ -1,0 +1,32 @@
+name: (Containerisation/Docker/Script - Test)
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.25'
+
+    - name: Test containerisation script
+      working-directory: ./containerisation/docker/script
+      run: |
+        go test -v ./...
+        go build -v ./...
